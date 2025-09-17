@@ -9,30 +9,30 @@ const Sidebar = () => {
     const [active, setActive] = useState(sidebarMenuLinks[0].name);
 
     return (
-        <div className="sidebar">
-            <div className="sidebar-title">LVN Fit</div>
+        <aside className="sidebar">
+            <h1 className="sidebar-title">LVN Fit</h1>
 
             <hr className="sidebar-divider" />
 
-            <div className="sidebar-section">
-                <div className="sidebar-label">MENU</div>
+            <section className="sidebar-section">
+                <h2 className="sidebar-label">MENU</h2>
                 <nav className="sidebar-nav">
                     {sidebarMenuLinks.map((link) => {
                         // passes props to SidebarLink.jsx
                         return <SidebarLink key={link.name} link={link} active={active} setActive={setActive} />;
                     })}
                 </nav>
-            </div>
+            </section>
 
-            <div className="sidebar-section">
-                <div className="sidebar-label">OTHER</div>
+            <section className="sidebar-section">
+                <h2 className="sidebar-label">OTHER</h2>
                 <nav className="sidebar-nav">
                     {sidebarOtherLinks.map((link) => {
                         return <SidebarLink key={link.name} link={link} active={active} setActive={setActive} />;
                     })}
                 </nav>
-            </div>
-        </div>
+            </section>
+        </aside>
     );
 };
 
