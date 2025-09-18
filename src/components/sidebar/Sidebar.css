@@ -48,7 +48,7 @@
 
     border-radius: 1rem;
     color: var(--primary-text);
-    text-decoration: none;
+    /* cursor: pointer; */
 
     padding: 0.5rem 1rem;
 
@@ -62,10 +62,5 @@
 .sidebar-link.active {
     background-color: var(--primary-color);
     color: var(--secondary-background);
-}
-
-.sidebar-link.active:hover {
-    background-color: var(--primary-color);
-    color: var(--secondary-background);
-    cursor: default;
+    pointer-events: none;
 }

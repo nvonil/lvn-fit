@@ -1,12 +1,12 @@
 import { useState } from "react";
-import SidebarLink from "./SidebarLink.jsx";
+import SidebarLink from "./SidebarLink";
 
-import { sidebarMenuLinks, sidebarOtherLinks } from "./sidebarLinks.js";
+import { sidebarLinks } from "./sidebarLinks";
 import "./Sidebar.css";
 
 const Sidebar = () => {
     // sets initial active state to "Dashboard"
-    const [active, setActive] = useState(sidebarMenuLinks[0].name);
+    const [active, setActive] = useState(sidebarLinks.menu[0].name);
 
     return (
         <aside className="sidebar">
@@ -17,19 +17,18 @@ const Sidebar = () => {
             <section className="sidebar-section">
                 <h2 className="sidebar-label">MENU</h2>
                 <nav className="sidebar-nav">
-                    {sidebarMenuLinks.map((link) => {
-                        // passes props to SidebarLink.jsx
-                        return <SidebarLink key={link.name} link={link} active={active} setActive={setActive} />;
-                    })}
+                    {sidebarLinks.menu.map((link) => (
+                        <SidebarLink key={link.name} link={link} active={active} setActive={setActive} />
+                    ))}
                 </nav>
             </section>
 
             <section className="sidebar-section">
                 <h2 className="sidebar-label">OTHER</h2>
                 <nav className="sidebar-nav">
-                    {sidebarOtherLinks.map((link) => {
-                        return <SidebarLink key={link.name} link={link} active={active} setActive={setActive} />;
-                    })}
+                    {sidebarLinks.other.map((link) => (
+                        <SidebarLink key={link.name} link={link} active={active} setActive={setActive} />
+                    ))}
                 </nav>
             </section>
         </aside>
