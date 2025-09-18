@@ -1,0 +1,26 @@
+.app-container {
+    display: flex;
+    gap: 2rem;
+
+    height: calc(100vh - 4rem);
+    margin: 2rem;
+}
+
+.page-container {
+    background-color: var(--secondary-background);
+    border-radius: 1rem;
+    box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.1);
+
+    padding: 3rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.page-footer {
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+    text-align: center;
+}
