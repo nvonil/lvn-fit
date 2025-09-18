@@ -1,41 +1,36 @@
 const DashboardNutrition = () => {
+    const nutritionMacros = [
+        { label: "Calories", current: 1200, goal: 1800, unit: "", suffix: "remaining" },
+        { label: "Protein", current: 110, goal: 150, unit: "g", suffix: "to go" },
+        { label: "Water", current: 80, goal: 120, unit: "oz", suffix: "left" },
+    ];
+
     return (
         <div className="dashboard-nutrition-content">
-            <div className="dashboard-nutrition-macro">
-                <div className="dashboard-nutrition-header">
-                    <span>Calories</span>
-                    <span>1200 / 1800</span>
-                </div>
-                <div className="dashboard-nutrition-progress-bar">
-                    <div
-                        className="dashboard-nutrition-progress-fill"
-                        style={{ width: `${(1200 / 1800) * 100}%` }}
-                    ></div>
-                </div>
-                <div className="dashboard-nutrition-remaining">600 remaining</div>
-            </div>
+            {nutritionMacros.map(({ label, current, goal, unit, suffix }) => (
+                <div className="dashboard-nutrition-macro" key={label}>
+                    <header className="dashboard-nutrition-header">
+                        <h3>{label}</h3>
+                        <span>
+                            {current}
+                            {unit} / {goal}
+                            {unit}
+                        </span>
+                    </header>
 
-            <div className="dashboard-nutrition-macro">
-                <div className="dashboard-nutrition-header">
-                    <span>Protein</span>
-                    <span>110g / 150g</span>
-                </div>
-                <div className="dashboard-nutrition-progress-bar">
-                    <div className="dashboard-nutrition-progress-fill" style={{ width: `${(110 / 150) * 100}%` }}></div>
-                </div>
-                <div className="dashboard-nutrition-remaining">40g remaining</div>
-            </div>
+                    <div className="dashboard-nutrition-progress-bar">
+                        <div
+                            className="dashboard-nutrition-progress-fill"
+                            style={{ width: `${(current / goal) * 100}%` }}
+                        ></div>
+                    </div>
 
-            <div className="dashboard-nutrition-macro">
-                <div className="dashboard-nutrition-header">
-                    <span>Water</span>
-                    <span>80oz / 120oz</span>
+                    <div className="dashboard-nutrition-suffix">
+                        {goal - current}
+                        {unit} {suffix}
+                    </div>
                 </div>
-                <div className="dashboard-nutrition-progress-bar">
-                    <div className="dashboard-nutrition-progress-fill" style={{ width: `${(80 / 120) * 100}%` }}></div>
-                </div>
-                <div className="dashboard-nutrition-remaining">40oz remaining</div>
-            </div>
+            ))}
         </div>
     );
 };
