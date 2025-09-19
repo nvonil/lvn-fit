@@ -1,17 +1,14 @@
-// recieves and destructures props from Sidebar.jsx
-const SidebarLink = ({ link, active, setActive }) => {
+import { Link, useLocation } from "react-router-dom";
+
+const SidebarLink = ({ link }) => {
+    const location = useLocation();
     const LinkIcon = link.icon;
 
     return (
-        <div
-            // checks if active state matches the link's name
-            className={`sidebar-link ${active === link.name ? "active" : ""}`}
-            // updates active state when link is clicked
-            onClick={() => setActive(link.name)}
-        >
+        <Link to={link.path} className={`sidebar-link text-primary ${location.pathname === link.path ? "active" : ""}`}>
             <LinkIcon size={18} />
             {link.name}
-        </div>
+        </Link>
     );
 };
 

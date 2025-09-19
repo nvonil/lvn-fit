@@ -1,18 +1,26 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Sidebar from "./components/sidebar/Sidebar";
 import Dashboard from "./components/pages/dashboard/Dashboard";
+import Workouts from "./components/pages/workouts/Workouts";
 
 import "./styles/App.css";
 
 function App() {
     return (
-        <div className="app-container">
-            <Sidebar />
-            <div className="page-container">
-                <Dashboard />
+        <Router>
+            <div className="app-container">
+                <Sidebar />
+                <div className="page-container">
+                    <Routes>
+                        <Route path="/" element={<Dashboard />} />
+                        <Route path="/workouts" element={<Workouts />} />
+                    </Routes>
 
-                <footer className="page-footer">&copy; 2025 LVN Fit</footer>
+                    <footer className="page-footer text-secondary">&copy; 2025 LVN Fit</footer>
+                </div>
             </div>
-        </div>
+        </Router>
     );
 }
 
