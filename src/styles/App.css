@@ -7,11 +7,11 @@
 }
 
 .page-container {
-    background-color: var(--secondary-background);
-    border-radius: 1rem;
+    background-color: var(--background-secondary);
+    border-radius: var(--space-base);
     box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.1);
 
-    padding: 3rem;
+    padding: var(--space-large);
 
     display: flex;
     flex-direction: column;
@@ -20,7 +20,5 @@
 }
 
 .page-footer {
-    color: var(--secondary-text);
-    font-size: 0.9rem;
     text-align: center;
 }
