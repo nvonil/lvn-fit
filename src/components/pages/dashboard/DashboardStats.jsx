@@ -9,21 +9,21 @@ const DashboardStats = () => {
     ];
 
     return (
-        <div className="dashboard-stats-content">
-            {statBubbles.map(({ label, icon: Icon, value, description }) => (
+        <article className="dashboard-stats-content">
+            {statBubbles.map(({ label, icon: StatsIcon, value, description }) => (
                 <div className="dashboard-stats-bubble" key={label}>
-                    <header className="dashboard-stats-header">
-                        <Icon size={16} />
+                    <h3 className="dashboard-stats-label text-secondary">
+                        <StatsIcon size={16} />
                         {label}
-                    </header>
+                    </h3>
 
                     <div className="dashboard-stats-info">
-                        <div className="dashboard-stats-value">{value}</div>
-                        <div className="dashboard-stats-description">{description}</div>
+                        <div className="label-primary">{value}</div>
+                        <div className="text-secondary">{description}</div>
                     </div>
                 </div>
             ))}
-        </div>
+        </article>
     );
 };
 

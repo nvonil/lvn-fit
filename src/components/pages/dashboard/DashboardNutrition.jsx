@@ -6,17 +6,17 @@ const DashboardNutrition = () => {
     ];
 
     return (
-        <div className="dashboard-nutrition-content">
+        <article className="dashboard-nutrition-content">
             {nutritionMacros.map(({ label, current, goal, unit, suffix }) => (
                 <div className="dashboard-nutrition-macro" key={label}>
-                    <header className="dashboard-nutrition-header">
-                        <h3>{label}</h3>
-                        <span>
+                    <div className="dashboard-nutrition-info text-primary">
+                        <div>{label}</div>
+                        <div>
                             {current}
                             {unit} / {goal}
                             {unit}
-                        </span>
-                    </header>
+                        </div>
+                    </div>
 
                     <div className="dashboard-nutrition-progress-bar">
                         <div
@@ -25,13 +25,13 @@ const DashboardNutrition = () => {
                         ></div>
                     </div>
 
-                    <div className="dashboard-nutrition-suffix">
+                    <div className="text-secondary">
                         {goal - current}
                         {unit} {suffix}
                     </div>
                 </div>
             ))}
-        </div>
+        </article>
     );
 };
 

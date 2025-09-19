@@ -2,24 +2,22 @@ import { Target, Clock } from "lucide-react";
 
 const DashboardWorkout = () => {
     return (
-        <div className="dashboard-workout-content">
+        <article className="dashboard-workout-content">
             <div className="dashboard-workout-info">
-                <h3 className="dashboard-workout-day">Push Day</h3>
+                <div className="text-primary">Push Day</div>
 
                 <ul className="dashboard-workout-summary">
-                    <li>
+                    <li className="text-secondary">
                         <Target size={16} />6 Exercises
                     </li>
-                    <li>
+                    <li className="text-secondary">
                         <Clock size={16} />1 Hour
                     </li>
                 </ul>
             </div>
 
-            <button type="button" className="dashboard-workout-button">
-                Start Workout
-            </button>
-        </div>
+            <button className="button">Start Workout</button>
+        </article>
     );
 };
 
