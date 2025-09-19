@@ -1,0 +1,55 @@
+/* Titles */
+
+.title {
+    color: var(--color-primary);
+    font-size: var(--font-size-large);
+    font-weight: var(--font-weight-bold);
+}
+
+.subtitle {
+    color: var(--text-primary);
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-bold);
+}
+
+/* Labels */
+
+.label-primary {
+    color: var(--text-primary);
+    font-weight: var(--font-weight-semibold);
+}
+
+.label-secondary {
+    color: var(--text-secondary);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Texts */
+
+.text-primary {
+    color: var(--text-primary);
+}
+
+.text-secondary {
+    color: var(--text-secondary);
+    font-size: var(--font-size-small);
+}
+
+/* Buttons */
+
+.button {
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: var(--space-base);
+    color: var(--background-secondary);
+    cursor: pointer;
+
+    padding: var(--space-small) var(--space-base);
+
+    transition: transform 0.3s;
+}
+
+.button:hover {
+    transform: scale(1.025);
+}
