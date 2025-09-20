@@ -38,7 +38,7 @@
 
 /* Buttons */
 
-.button {
+.button-primary {
     background-color: var(--color-primary);
     border: none;
     border-radius: var(--space-base);
@@ -50,6 +50,51 @@
     transition: transform 0.3s;
 }
 
-.button:hover {
+.button-primary:hover {
     transform: scale(1.025);
+}
+
+.button-secondary {
+    background-color: var(--background-secondary);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--space-base);
+    color: var(--color-primary);
+    cursor: pointer;
+
+    padding: var(--space-small) var(--space-base);
+
+    transition: background-color 0.3s;
+}
+
+.button-secondary:hover {
+    background-color: var(--background-primary);
+}
+
+/* Form */
+
+.form-label {
+    color: var(--text-primary);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-semibold);
+}
+
+.form-input {
+    padding: var(--space-small) var(--space-base);
+
+    background-color: var(--background-primary);
+    border: 1px solid transparent;
+    border-radius: var(--space-base);
+    color: var(--text-primary);
+    font-size: var(--font-size-small);
+    outline: none;
+
+    transition: border 0.3s;
+}
+
+.form-input::placeholder {
+    color: var(--text-secondary);
+}
+
+.form-input:focus {
+    border: 1px solid var(--color-primary);
 }
