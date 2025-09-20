@@ -1,14 +1,11 @@
-import { Link, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const SidebarLink = ({ link }) => {
-    const location = useLocation();
-    const LinkIcon = link.icon;
-
     return (
-        <Link to={link.path} className={`sidebar-link text-primary ${location.pathname === link.path ? "active" : ""}`}>
-            <LinkIcon size={18} />
+        <NavLink to={link.path} className={({ isActive }) => `sidebar-link text-primary ${isActive ? "active" : ""}`}>
+            <link.icon size={18} />
             {link.name}
-        </Link>
+        </NavLink>
     );
 };
 
