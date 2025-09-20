@@ -1,4 +1,4 @@
-.app-container {
+.app {
     display: flex;
     gap: 2rem;
 
@@ -6,7 +6,7 @@
     margin: 2rem;
 }
 
-.page-container {
+.main {
     background-color: var(--background-secondary);
     border-radius: var(--space-base);
     box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.1);
@@ -19,6 +19,6 @@
     flex: 1;
 }
 
-.page-footer {
+.main-footer {
     text-align: center;
 }

@@ -9,16 +9,16 @@ import "./styles/App.css";
 function App() {
     return (
         <Router>
-            <div className="app-container">
+            <div className="app">
                 <Sidebar />
-                <div className="page-container">
+                <main className="main">
                     <Routes>
                         <Route path="/" element={<Dashboard />} />
                         <Route path="/workouts" element={<Workouts />} />
                     </Routes>
 
-                    <footer className="page-footer text-secondary">&copy; 2025 LVN Fit</footer>
-                </div>
+                    <footer className="main-footer text-secondary">&copy; 2025 LVN Fit</footer>
+                </main>
             </div>
         </Router>
     );
