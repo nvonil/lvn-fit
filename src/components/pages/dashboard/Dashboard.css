@@ -11,7 +11,7 @@
 }
 
 .dashboard-section,
-.dashboard-stats-bubble {
+.dashboard-stats-stat {
     border: 1px solid var(--color-primary);
     border-radius: var(--space-base);
 
@@ -34,34 +34,34 @@
     gap: var(--space-base);
 }
 
-/* Workout Section */
+/* Workout */
 
-.dashboard-workout-content {
+.dashboard-workout {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.dashboard-workout-info {
+.dashboard-workout-details {
     display: flex;
     flex-direction: column;
     gap: var(--space-small);
 }
 
-.dashboard-workout-summary {
+.dashboard-workout-metrics {
     display: flex;
     gap: var(--space-base);
 }
 
-.dashboard-workout-summary li {
+.dashboard-workout-metrics li {
     display: flex;
     align-items: center;
     gap: var(--space-small);
 }
 
-/* Nutrition Section */
+/* Nutrition */
 
-.dashboard-nutrition-content {
+.dashboard-nutrition {
     display: flex;
     gap: var(--space-large);
 }
@@ -73,38 +73,38 @@
     flex: 1;
 }
 
-.dashboard-nutrition-info {
+.dashboard-nutrition-details {
     display: flex;
     justify-content: space-between;
 }
 
-.dashboard-nutrition-progress-bar {
-    height: 1rem;
+.dashboard-nutrition-bar {
+    height: 0.5rem;
 
     background-color: var(--background-primary);
     border-radius: var(--space-base);
 }
 
-.dashboard-nutrition-progress-fill {
+.dashboard-nutrition-bar-fill {
     height: 100%;
 
     background-color: var(--color-primary);
     border-radius: var(--space-base) 0 0 var(--space-base);
 }
 
-/* Stats Section */
+/* Stats */
 
-.dashboard-stats-content {
+.dashboard-stats {
     display: flex;
     gap: var(--space-medium);
 }
 
-.dashboard-stats-bubble {
+.dashboard-stats-stat {
     gap: var(--space-base);
     flex: 1;
 }
 
-.dashboard-stats-bubble:hover {
+.dashboard-stats-stat:hover {
     transform: scale(1.025);
 }
 
