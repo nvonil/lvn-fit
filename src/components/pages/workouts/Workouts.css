@@ -1,0 +1,219 @@
+.workouts {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-large);
+}
+
+.workouts-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-small);
+}
+
+.workouts-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-medium);
+}
+
+/* Week */
+
+.workouts-nav {
+    display: flex;
+
+    border: 1px solid var(--color-primary);
+    border-radius: var(--space-base);
+
+    padding: var(--space-extra-small);
+}
+
+.workouts-day {
+    padding: var(--space-extra-small) var(--space-small);
+
+    border-radius: var(--space-base);
+    text-align: center;
+
+    flex: 1;
+
+    transition: background-color 0.3s;
+}
+
+.workouts-day:hover {
+    background-color: var(--background-primary);
+}
+
+.workouts-day.active {
+    background-color: var(--color-primary);
+    color: var(--background-secondary);
+}
+
+/* Plan */
+
+.workouts-plan {
+    border: 1px solid var(--color-primary);
+    border-radius: var(--space-base);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-medium);
+
+    padding: var(--space-medium);
+}
+
+.workouts-plan-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.workouts-label,
+.workouts-button {
+    display: flex;
+    align-items: center;
+    gap: var(--space-base);
+}
+
+/* Exercises */
+
+.workouts-plan-exercises {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-medium);
+
+    overflow-y: auto;
+
+    height: 350px;
+    padding: 0 var(--space-medium);
+}
+
+.workouts-plan-exercises::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+.workouts-plan-exercises::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+    border-radius: var(--space-base);
+}
+
+.workouts-exercise {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-base);
+
+    background-color: var(--background-primary);
+    border-radius: var(--space-base);
+
+    padding: var(--space-base);
+
+    transition: transform 0.3s;
+}
+
+.workouts-exercise:hover {
+    transform: scale(1.01);
+}
+
+.workouts-exercise-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.workouts-exercise-details {
+    display: flex;
+    align-items: center;
+    gap: var(--space-base);
+}
+
+.workouts-tag {
+    border: 1px solid var(--color-primary);
+    border-radius: var(--space-base);
+    font-size: var(--font-size-extra-small);
+
+    padding: var(--space-extra-small) var(--space-small);
+}
+
+.workouts-delete {
+    color: var(--color-primary);
+    cursor: pointer;
+
+    transition: color 0.3s;
+}
+
+.workouts-delete:hover {
+    color: var(--color-delete);
+}
+
+.workouts-metrics {
+    display: flex;
+    gap: var(--space-base);
+
+    list-style: none;
+}
+
+/* Modal */
+
+.workouts-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.workouts-modal {
+    z-index: 2;
+
+    background-color: var(--background-secondary);
+    border-radius: var(--space-base);
+
+    padding: var(--space-medium);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-medium);
+}
+
+.workouts-modal-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-extra-small);
+}
+
+/* Modal Form */
+
+.workouts-modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-medium);
+}
+
+.workouts-modal-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-small);
+}
+
+.workouts-modal-form-group {
+    display: flex;
+    gap: var(--space-base);
+}
+
+.workouts-modal-form-actions {
+    display: flex;
+    gap: var(--space-base);
+
+    margin-top: var(--space-medium);
+}
+
+.form-button {
+    font-size: var(--font-size-small);
+}
+
+.form-button:first-child {
+    flex: 1;
+
+    text-align: center;
+}
