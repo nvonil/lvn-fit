@@ -10,6 +10,7 @@
 
 :root {
     --color-primary: #454545;
+    --color-delete: #e5383b;
 
     --background-primary: #e9ecef;
     --background-secondary: #f8f9fa;
@@ -18,11 +19,13 @@
     --text-secondary: #6c757d;
 
     --space-base: 1rem;
+    --space-extra-small: 0.25rem;
     --space-small: 0.5rem;
     --space-medium: 1.5rem;
     --space-large: 3rem;
 
     --font-size-base: 1rem;
+    --font-size-extra-small: 0.8rem;
     --font-size-small: 0.9rem;
     --font-size-medium: 1.25rem;
     --font-size-large: 1.5rem;
