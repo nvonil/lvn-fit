@@ -1,6 +1,28 @@
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 
-const WorkoutsModal = ({ handleModalClose }) => {
+const WorkoutsModal = ({ handleModalClose, handleAddExercise }) => {
+    const [name, setName] = useState("");
+    const [tag, setTag] = useState("");
+    const [sets, setSets] = useState("");
+    const [reps, setReps] = useState("");
+    const [weight, setWeight] = useState("");
+    const [rest, setRest] = useState("");
+
+    const nameInputRef = useRef(null);
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+
+        if (!name || !tag || !sets || !reps || !weight || !rest) {
+            alert("Please fill out all fields");
+            return;
+        }
+
+        handleAddExercise({ name, tag, sets, reps, weight, rest });
+        handleModalClose();
+    };
+
     return (
         <motion.div
             className="workouts-modal-overlay"
@@ -15,19 +37,32 @@ const WorkoutsModal = ({ handleModalClose }) => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
+                onAnimationComplete={() => {
+                    if (nameInputRef.current) {
+                        nameInputRef.current.focus();
+                    }
+                }}
             >
                 <header className="workouts-modal-header">
                     <h1 className="label-primary">Add Exercise to Workout</h1>
                     <div className="text-secondary">Enter the exercise information for your workout</div>
                 </header>
 
-                <form className="workouts-modal-form">
+                <form className="workouts-modal-form" onSubmit={handleFormSubmit} autoComplete="off">
                     {/* Name */}
                     <div className="workouts-modal-form-field">
                         <label htmlFor="name" className="form-label">
                             Exercise Name *
                         </label>
-                        <input type="text" id="name" className="form-input" placeholder="e.g. Machine Chest Press" />
+                        <input
+                            type="text"
+                            id="name"
+                            className="form-input"
+                            placeholder="e.g. Machine Chest Press"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            ref={nameInputRef}
+                        />
                     </div>
 
                     {/* Tag */}
@@ -35,7 +70,14 @@ const WorkoutsModal = ({ handleModalClose }) => {
                         <label htmlFor="tag" className="form-label">
                             Tag *
                         </label>
-                        <input type="text" id="tag" className="form-input" placeholder="e.g. Chest" />
+                        <input
+                            type="text"
+                            id="tag"
+                            className="form-input"
+                            placeholder="e.g. Chest"
+                            value={tag}
+                            onChange={(e) => setTag(e.target.value)}
+                        />
                     </div>
 
                     {/* Sets, Reps */}
@@ -44,14 +86,30 @@ const WorkoutsModal = ({ handleModalClose }) => {
                             <label htmlFor="sets" className="form-label">
                                 Sets *
                             </label>
-                            <input type="number" id="sets" className="form-input" placeholder="e.g. 3" />
+                            <input
+                                type="number"
+                                id="sets"
+                                className="form-input"
+                                placeholder="e.g. 3"
+                                value={sets}
+                                onChange={(e) => setSets(e.target.value)}
+                                min={1}
+                            />
                         </div>
 
                         <div className="workouts-modal-form-field">
                             <label htmlFor="reps" className="form-label">
                                 Reps *
                             </label>
-                            <input type="text" id="reps" className="form-input" placeholder="e.g. 6-8" />
+                            <input
+                                type="number"
+                                id="reps"
+                                className="form-input"
+                                placeholder="e.g. 6"
+                                value={reps}
+                                onChange={(e) => setReps(e.target.value)}
+                                min={1}
+                            />
                         </div>
                     </div>
 
@@ -61,20 +119,36 @@ const WorkoutsModal = ({ handleModalClose }) => {
                             <label htmlFor="weight" className="form-label">
                                 Weight *
                             </label>
-                            <input type="text" id="weight" className="form-input" placeholder="e.g. 120lb" />
+                            <input
+                                type="text"
+                                id="weight"
+                                className="form-input"
+                                placeholder="e.g. 120lb"
+                                value={weight}
+                                onChange={(e) => setWeight(e.target.value)}
+                            />
                         </div>
 
                         <div className="workouts-modal-form-field">
                             <label htmlFor="rest" className="form-label">
                                 Rest Time *
                             </label>
-                            <input type="text" id="rest" className="form-input" placeholder="e.g. 4 minutes" />
+                            <input
+                                type="text"
+                                id="rest"
+                                className="form-input"
+                                placeholder="e.g. 4 minutes"
+                                value={rest}
+                                onChange={(e) => setRest(e.target.value)}
+                            />
                         </div>
                     </div>
 
                     <div className="workouts-modal-form-actions">
-                        <button className="form-button button-primary">Add to Workout</button>
-                        <button className="form-button button-secondary" onClick={handleModalClose}>
+                        <button type="submit" className="form-button button-primary">
+                            Add to Workout
+                        </button>
+                        <button type="button" className="form-button button-secondary" onClick={handleModalClose}>
                             Cancel
                         </button>
                     </div>

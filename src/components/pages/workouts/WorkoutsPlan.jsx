@@ -1,57 +1,6 @@
 import { Dumbbell, Plus, Trash } from "lucide-react";
 
-const WorkoutsPlan = ({ handleModalOpen }) => {
-    const exercises = [
-        {
-            name: "Machine Incline Chest Press",
-            tag: "Chest",
-            sets: 3,
-            reps: "6-8",
-            weight: "120lb",
-            rest: "4 minutes",
-        },
-        {
-            name: "Machine Shoulder Press",
-            tag: "Shoulders",
-            sets: 3,
-            reps: "8-10",
-            weight: "70lb",
-            rest: "3 minutes",
-        },
-        {
-            name: "Machine Chest Fly",
-            tag: "Chest",
-            sets: 3,
-            reps: "6-8",
-            weight: "80lb",
-            rest: "3 minutes",
-        },
-        {
-            name: "Dumbbell Lateral Raises",
-            tag: "Shoulders",
-            sets: 3,
-            reps: "10-12",
-            weight: "20lb",
-            rest: "2 minutes",
-        },
-        {
-            name: "Cable Tricep Pushdowns",
-            tag: "Triceps",
-            sets: 3,
-            reps: "8-10",
-            weight: "80lb",
-            rest: "2 minutes",
-        },
-        {
-            name: "Cable Overhead Tricep Extensions",
-            tag: "Triceps",
-            sets: 3,
-            reps: "8-10",
-            weight: "80lb",
-            rest: "2 minutes",
-        },
-    ];
-
+const WorkoutsPlan = ({ handleModalOpen, exercises }) => {
     return (
         <div className="workouts-plan">
             <header className="workouts-plan-header">
