@@ -62,13 +62,29 @@
 
 .workouts-plan-header {
     display: flex;
-    justify-content: space-between;
+    gap: var(--space-base);
 }
 
 .workouts-label,
 .workouts-button {
     display: flex;
     align-items: center;
+    gap: var(--space-base);
+}
+
+.workouts-label-input,
+.workouts-label {
+    flex: 1;
+}
+
+.workouts-label-input {
+    background-color: var(--background-secondary);
+    border: none;
+    outline: none;
+}
+
+.workouts-actions {
+    display: flex;
     gap: var(--space-base);
 }
 
