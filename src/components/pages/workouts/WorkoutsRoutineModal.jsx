@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 
-const WorkoutsRoutineModal = ({ setRoutineName, handleRoutineModalClose }) => {
+const WorkoutsRoutineModal = ({ handleRoutineName, handleRoutineModalClose }) => {
     const [name, setName] = useState("");
 
     const nameInputRef = useRef(null);
@@ -20,7 +20,7 @@ const WorkoutsRoutineModal = ({ setRoutineName, handleRoutineModalClose }) => {
             return;
         }
 
-        setRoutineName(name);
+        handleRoutineName(name);
         handleRoutineModalClose();
     };
 

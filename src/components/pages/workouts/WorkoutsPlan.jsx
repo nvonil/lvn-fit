@@ -5,15 +5,12 @@ import { Dumbbell, Pencil, Plus, Trash } from "lucide-react";
 const WorkoutsPlan = ({ routineName, handleExerciseModalOpen, exercises, setExercises }) => {
     const [workoutLabel, setWorkoutLabel] = useState(routineName);
     const [isEditing, setIsEditing] = useState(false);
+
     const editInputRef = useRef(null);
 
-    const handleWorkoutLabelChange = (e) => {
-        setWorkoutLabel(e.target.value);
-    };
-
-    const handleEditLabel = () => {
-        setIsEditing(true);
-    };
+    useEffect(() => {
+        setWorkoutLabel(routineName);
+    }, [routineName]);
 
     const handleEditLabelEnter = (e) => {
         if (e.key === "Enter") {
@@ -47,7 +44,7 @@ const WorkoutsPlan = ({ routineName, handleExerciseModalOpen, exercises, setExer
                             type="text"
                             className="workouts-label-input label-primary"
                             value={workoutLabel}
-                            onChange={handleWorkoutLabelChange}
+                            onChange={(e) => setWorkoutLabel(e.target.value)}
                             onKeyDown={handleEditLabelEnter}
                             onBlur={handleEditLabelBlur}
                             ref={editInputRef}
@@ -58,7 +55,7 @@ const WorkoutsPlan = ({ routineName, handleExerciseModalOpen, exercises, setExer
                 </h2>
 
                 <div className="workouts-actions">
-                    <button className="workouts-button button-primary" onClick={handleEditLabel}>
+                    <button className="workouts-button button-primary" onClick={() => setIsEditing(true)}>
                         <Pencil size={18} />
                         Edit Title
                     </button>
