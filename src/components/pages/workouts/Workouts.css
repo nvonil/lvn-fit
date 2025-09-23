@@ -31,11 +31,12 @@
     padding: var(--space-extra-small) var(--space-small);
 
     border-radius: var(--space-base);
+    cursor: pointer;
     text-align: center;
 
     flex: 1;
 
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .workouts-day:hover {
@@ -114,6 +115,8 @@
 
 .workouts-empty {
     text-align: center;
+
+    margin-bottom: var(--space-medium);
 }
 
 .workouts-exercise {
@@ -231,10 +234,6 @@
     margin-top: var(--space-medium);
 }
 
-.routine-actions {
-    margin-top: 0;
-}
-
 .form-button {
     font-size: var(--font-size-small);
 }
@@ -243,4 +242,10 @@
     flex: 1;
 
     text-align: center;
+}
+
+/* Routine */
+
+.routine-actions {
+    margin-top: 0;
 }
