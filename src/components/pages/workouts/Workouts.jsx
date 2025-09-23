@@ -41,6 +41,11 @@ const Workouts = () => {
         setExercises([...exercises, exercise]);
     };
 
+    const handleRemoveExercise = (name) => {
+        const newExercises = exercises.filter((exercise) => exercise.name !== name);
+        setExercises(newExercises);
+    };
+
     return (
         <main className="workouts">
             <header className="workouts-header">
@@ -50,7 +55,11 @@ const Workouts = () => {
 
             <section className="workouts-section">
                 <WorkoutsWeek />
-                <WorkoutsPlan handleModalOpen={handleModalOpen} exercises={exercises} />
+                <WorkoutsPlan
+                    handleModalOpen={handleModalOpen}
+                    exercises={exercises}
+                    handleRemoveExercise={handleRemoveExercise}
+                />
             </section>
 
             <AnimatePresence>
