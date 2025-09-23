@@ -47,6 +47,12 @@
     color: var(--background-secondary);
 }
 
+/* Routine */
+
+.routine-button {
+    align-self: center;
+}
+
 /* Plan */
 
 .workouts-plan {
@@ -104,6 +110,10 @@
 .workouts-plan-exercises::-webkit-scrollbar-thumb {
     background-color: var(--color-primary);
     border-radius: var(--space-base);
+}
+
+.workouts-empty {
+    text-align: center;
 }
 
 .workouts-exercise {
@@ -219,6 +229,10 @@
     gap: var(--space-base);
 
     margin-top: var(--space-medium);
+}
+
+.routine-actions {
+    margin-top: 0;
 }
 
 .form-button {
