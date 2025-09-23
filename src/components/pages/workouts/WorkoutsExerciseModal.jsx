@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 
-const WorkoutsModal = ({ handleModalClose, handleAddExercise }) => {
+const WorkoutsExerciseModal = ({ exercises, setExercises, handleExerciseModalClose }) => {
     const [name, setName] = useState("");
     const [tag, setTag] = useState("");
     const [sets, setSets] = useState("");
@@ -17,6 +17,10 @@ const WorkoutsModal = ({ handleModalClose, handleAddExercise }) => {
         }
     };
 
+    const handleAddExercise = (exercise) => {
+        setExercises([...exercises, exercise]);
+    };
+
     const handleFormSubmit = (e) => {
         e.preventDefault();
 
@@ -26,13 +30,13 @@ const WorkoutsModal = ({ handleModalClose, handleAddExercise }) => {
         }
 
         handleAddExercise({ name, tag, sets, reps, weight, rest });
-        handleModalClose();
+        handleExerciseModalClose();
     };
 
     return (
         <motion.div
             className="workouts-modal-overlay"
-            onClick={handleModalClose}
+            onClick={handleExerciseModalClose}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -46,8 +50,8 @@ const WorkoutsModal = ({ handleModalClose, handleAddExercise }) => {
                 onAnimationComplete={handleInputFocus}
             >
                 <header className="workouts-modal-header">
-                    <h1 className="label-primary">Add Exercise to Workout</h1>
-                    <div className="text-secondary">Enter the exercise information for your workout</div>
+                    <h1 className="label-primary">Add Exercise to Routine</h1>
+                    <div className="text-secondary">Enter the exercise information for your routine</div>
                 </header>
 
                 <form className="workouts-modal-form" onSubmit={handleFormSubmit} autoComplete="off">
@@ -150,10 +154,14 @@ const WorkoutsModal = ({ handleModalClose, handleAddExercise }) => {
 
                     <div className="workouts-modal-form-actions">
                         <button type="submit" className="form-button button-primary">
-                            Add to Workout
+                            Add to Routine
                         </button>
 
-                        <button type="button" className="form-button button-secondary" onClick={handleModalClose}>
+                        <button
+                            type="button"
+                            className="form-button button-secondary"
+                            onClick={handleExerciseModalClose}
+                        >
                             Cancel
                         </button>
                     </div>
@@ -163,4 +171,4 @@ const WorkoutsModal = ({ handleModalClose, handleAddExercise }) => {
     );
 };
 
-export default WorkoutsModal;
+export default WorkoutsExerciseModal;
