@@ -2,10 +2,9 @@ import { useState, useEffect, useRef } from "react";
 
 import { Dumbbell, Pencil, Plus, Trash } from "lucide-react";
 
-const WorkoutsPlan = ({ handleModalOpen, exercises, handleRemoveExercise }) => {
-    const [workoutLabel, setWorkoutLabel] = useState("Push Day Workout");
+const WorkoutsPlan = ({ routineName, handleExerciseModalOpen, exercises, setExercises }) => {
+    const [workoutLabel, setWorkoutLabel] = useState(routineName);
     const [isEditing, setIsEditing] = useState(false);
-
     const editInputRef = useRef(null);
 
     const handleWorkoutLabelChange = (e) => {
@@ -14,6 +13,12 @@ const WorkoutsPlan = ({ handleModalOpen, exercises, handleRemoveExercise }) => {
 
     const handleEditLabel = () => {
         setIsEditing(true);
+    };
+
+    const handleEditLabelEnter = (e) => {
+        if (e.key === "Enter") {
+            setIsEditing(false);
+        }
     };
 
     const handleEditLabelBlur = () => {
@@ -25,6 +30,11 @@ const WorkoutsPlan = ({ handleModalOpen, exercises, handleRemoveExercise }) => {
             editInputRef.current.focus();
         }
     }, [isEditing]);
+
+    const handleRemoveExercise = (name) => {
+        const newExercises = exercises.filter((exercise) => exercise.name !== name);
+        setExercises(newExercises);
+    };
 
     return (
         <div className="workouts-plan">
@@ -38,6 +48,7 @@ const WorkoutsPlan = ({ handleModalOpen, exercises, handleRemoveExercise }) => {
                             className="workouts-label-input label-primary"
                             value={workoutLabel}
                             onChange={handleWorkoutLabelChange}
+                            onKeyDown={handleEditLabelEnter}
                             onBlur={handleEditLabelBlur}
                             ref={editInputRef}
                         />
@@ -52,7 +63,7 @@ const WorkoutsPlan = ({ handleModalOpen, exercises, handleRemoveExercise }) => {
                         Edit Title
                     </button>
 
-                    <button className="workouts-button button-primary" onClick={handleModalOpen}>
+                    <button className="workouts-button button-primary" onClick={handleExerciseModalOpen}>
                         <Plus size={18} />
                         Add Exercise
                     </button>
@@ -60,31 +71,35 @@ const WorkoutsPlan = ({ handleModalOpen, exercises, handleRemoveExercise }) => {
             </header>
 
             <div className="workouts-plan-exercises">
-                {exercises.map((exercise) => {
-                    return (
-                        <div className="workouts-exercise" key={exercise.name}>
-                            <header className="workouts-exercise-header">
-                                <div className="workouts-exercise-details">
-                                    <div className="text-primary">{exercise.name}</div>
-                                    <div className="workouts-tag"> {exercise.tag}</div>
-                                </div>
+                {exercises.length > 0 ? (
+                    exercises.map((exercise) => {
+                        return (
+                            <div className="workouts-exercise" key={exercise.name}>
+                                <header className="workouts-exercise-header">
+                                    <div className="workouts-exercise-details">
+                                        <div className="text-primary">{exercise.name}</div>
+                                        <div className="workouts-tag"> {exercise.tag}</div>
+                                    </div>
 
-                                <Trash
-                                    size={18}
-                                    className="workouts-delete"
-                                    onClick={() => handleRemoveExercise(exercise.name)}
-                                />
-                            </header>
+                                    <Trash
+                                        size={18}
+                                        className="workouts-delete"
+                                        onClick={() => handleRemoveExercise(exercise.name)}
+                                    />
+                                </header>
 
-                            <ul className="workouts-metrics">
-                                <li className="text-secondary">Sets: {exercise.sets}</li>
-                                <li className="text-secondary">Reps: {exercise.reps}</li>
-                                <li className="text-secondary">Weight: {exercise.weight}</li>
-                                <li className="text-secondary">Rest: {exercise.rest}</li>
-                            </ul>
-                        </div>
-                    );
-                })}
+                                <ul className="workouts-metrics">
+                                    <li className="text-secondary">Sets: {exercise.sets}</li>
+                                    <li className="text-secondary">Reps: {exercise.reps}</li>
+                                    <li className="text-secondary">Weight: {exercise.weight}</li>
+                                    <li className="text-secondary">Rest: {exercise.rest}</li>
+                                </ul>
+                            </div>
+                        );
+                    })
+                ) : (
+                    <div className="workouts-empty text-secondary">No exercises added yet</div>
+                )}
             </div>
         </div>
     );

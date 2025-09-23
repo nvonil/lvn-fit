@@ -3,48 +3,18 @@ import { AnimatePresence } from "framer-motion";
 
 import WorkoutsWeek from "./WorkoutsWeek";
 import WorkoutsPlan from "./WorkoutsPlan";
-import WorkoutsModal from "./WorkoutsModal";
+import WorkoutsRoutineModal from "./WorkoutsRoutineModal";
+import WorkoutsExerciseModal from "./WorkoutsExerciseModal";
 
+import { Plus } from "lucide-react";
 import "./Workouts.css";
 
 const Workouts = () => {
-    const [modalOpen, setModalOpen] = useState(false);
+    const [routineModalOpen, setRoutineModalOpen] = useState(false);
+    const [exerciseModalOpen, setExerciseModalOpen] = useState(false);
 
-    const [exercises, setExercises] = useState([
-        {
-            name: "Machine Incline Chest Press",
-            tag: "Chest",
-            sets: 3,
-            reps: "6",
-            weight: "120lb",
-            rest: "4 minutes",
-        },
-        {
-            name: "Machine Shoulder Press",
-            tag: "Shoulders",
-            sets: 3,
-            reps: "8",
-            weight: "70lb",
-            rest: "3 minutes",
-        },
-    ]);
-
-    const handleModalOpen = () => {
-        setModalOpen(true);
-    };
-
-    const handleModalClose = () => {
-        setModalOpen(false);
-    };
-
-    const handleAddExercise = (exercise) => {
-        setExercises([...exercises, exercise]);
-    };
-
-    const handleRemoveExercise = (name) => {
-        const newExercises = exercises.filter((exercise) => exercise.name !== name);
-        setExercises(newExercises);
-    };
+    const [routineName, setRoutineName] = useState("");
+    const [exercises, setExercises] = useState([]);
 
     return (
         <main className="workouts">
@@ -55,16 +25,43 @@ const Workouts = () => {
 
             <section className="workouts-section">
                 <WorkoutsWeek />
-                <WorkoutsPlan
-                    handleModalOpen={handleModalOpen}
-                    exercises={exercises}
-                    handleRemoveExercise={handleRemoveExercise}
-                />
+
+                {routineName ? (
+                    <WorkoutsPlan
+                        routineName={routineName}
+                        handleExerciseModalOpen={() => setExerciseModalOpen(true)}
+                        exercises={exercises}
+                        setExercises={setExercises}
+                    />
+                ) : (
+                    <button
+                        className="workouts-button routine-button button-primary"
+                        onClick={() => setRoutineModalOpen(true)}
+                    >
+                        <Plus size={18} />
+                        Add Routine
+                    </button>
+                )}
             </section>
 
+            {/* Routine Modal */}
             <AnimatePresence>
-                {modalOpen && (
-                    <WorkoutsModal handleModalClose={handleModalClose} handleAddExercise={handleAddExercise} />
+                {routineModalOpen && (
+                    <WorkoutsRoutineModal
+                        setRoutineName={setRoutineName}
+                        handleRoutineModalClose={() => setRoutineModalOpen(false)}
+                    />
+                )}
+            </AnimatePresence>
+
+            {/* Exercise Modal */}
+            <AnimatePresence>
+                {exerciseModalOpen && (
+                    <WorkoutsExerciseModal
+                        exercises={exercises}
+                        setExercises={setExercises}
+                        handleExerciseModalClose={() => setExerciseModalOpen(false)}
+                    />
                 )}
             </AnimatePresence>
         </main>
