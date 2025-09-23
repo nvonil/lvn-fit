@@ -11,11 +11,17 @@ const WorkoutsModal = ({ handleModalClose, handleAddExercise }) => {
 
     const nameInputRef = useRef(null);
 
+    const handleInputFocus = () => {
+        if (nameInputRef.current) {
+            nameInputRef.current.focus();
+        }
+    };
+
     const handleFormSubmit = (e) => {
         e.preventDefault();
 
         if (!name || !tag || !sets || !reps || !weight || !rest) {
-            alert("Please fill out all fields");
+            alert("Please fill out all fields.");
             return;
         }
 
@@ -37,11 +43,7 @@ const WorkoutsModal = ({ handleModalClose, handleAddExercise }) => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                onAnimationComplete={() => {
-                    if (nameInputRef.current) {
-                        nameInputRef.current.focus();
-                    }
-                }}
+                onAnimationComplete={handleInputFocus}
             >
                 <header className="workouts-modal-header">
                     <h1 className="label-primary">Add Exercise to Workout</h1>
@@ -80,8 +82,8 @@ const WorkoutsModal = ({ handleModalClose, handleAddExercise }) => {
                         />
                     </div>
 
-                    {/* Sets, Reps */}
                     <div className="workouts-modal-form-group">
+                        {/* Sets */}
                         <div className="workouts-modal-form-field">
                             <label htmlFor="sets" className="form-label">
                                 Sets *
@@ -97,6 +99,7 @@ const WorkoutsModal = ({ handleModalClose, handleAddExercise }) => {
                             />
                         </div>
 
+                        {/* Reps */}
                         <div className="workouts-modal-form-field">
                             <label htmlFor="reps" className="form-label">
                                 Reps *
@@ -113,8 +116,8 @@ const WorkoutsModal = ({ handleModalClose, handleAddExercise }) => {
                         </div>
                     </div>
 
-                    {/* Weight, Rest */}
                     <div className="workouts-modal-form-group">
+                        {/* Weight */}
                         <div className="workouts-modal-form-field">
                             <label htmlFor="weight" className="form-label">
                                 Weight *
@@ -129,6 +132,7 @@ const WorkoutsModal = ({ handleModalClose, handleAddExercise }) => {
                             />
                         </div>
 
+                        {/* Rest */}
                         <div className="workouts-modal-form-field">
                             <label htmlFor="rest" className="form-label">
                                 Rest Time *
@@ -148,6 +152,7 @@ const WorkoutsModal = ({ handleModalClose, handleAddExercise }) => {
                         <button type="submit" className="form-button button-primary">
                             Add to Workout
                         </button>
+
                         <button type="button" className="form-button button-secondary" onClick={handleModalClose}>
                             Cancel
                         </button>
