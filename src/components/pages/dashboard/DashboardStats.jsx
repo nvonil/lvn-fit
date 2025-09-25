@@ -9,9 +9,9 @@ const DashboardStats = () => {
     ];
 
     return (
-        <article className="dashboard-stats">
+        <section className="dashboard-stats-section">
             {stats.map((stat) => (
-                <div className="dashboard-stats-stat" key={stat.label}>
+                <article className="dashboard-stats" key={stat.label}>
                     <h2 className="dashboard-stats-label text-secondary">
                         <stat.icon size={16} />
                         {stat.label}
@@ -21,9 +21,9 @@ const DashboardStats = () => {
                         <div className="label-primary">{stat.value}</div>
                         <div className="text-secondary">{stat.description}</div>
                     </div>
-                </div>
+                </article>
             ))}
-        </article>
+        </section>
     );
 };
 
