@@ -1,7 +1,10 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
+import { useWorkouts } from "../../contexts/WorkoutsContext";
 
-const WorkoutsExerciseModal = ({ exercises, setExercises, handleExerciseModalClose }) => {
+const WorkoutsExerciseModal = ({ handleExerciseModalClose }) => {
+    const { selectedDay, setWorkoutsByDay } = useWorkouts();
+
     const [name, setName] = useState("");
     const [tag, setTag] = useState("");
     const [sets, setSets] = useState("");
@@ -17,8 +20,14 @@ const WorkoutsExerciseModal = ({ exercises, setExercises, handleExerciseModalClo
         }
     };
 
-    const handleAddExercise = (exercise) => {
-        setExercises([...exercises, exercise]);
+    const addExercise = (exercise) => {
+        setWorkoutsByDay((current) => ({
+            ...current,
+            [selectedDay]: {
+                ...current[selectedDay],
+                exercises: [...current[selectedDay].exercises, exercise],
+            },
+        }));
     };
 
     const handleFormSubmit = (e) => {
@@ -29,7 +38,7 @@ const WorkoutsExerciseModal = ({ exercises, setExercises, handleExerciseModalClo
             return;
         }
 
-        handleAddExercise({ name, tag, sets, reps, weight, rest });
+        addExercise({ name, tag, sets, reps, weight, rest });
         handleExerciseModalClose();
     };
 
@@ -145,7 +154,7 @@ const WorkoutsExerciseModal = ({ exercises, setExercises, handleExerciseModalClo
                                 type="text"
                                 id="rest"
                                 className="form-input"
-                                placeholder="e.g. 4 minutes"
+                                placeholder="e.g. 3 minutes"
                                 value={rest}
                                 onChange={(e) => setRest(e.target.value)}
                             />

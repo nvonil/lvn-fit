@@ -1,6 +1,20 @@
-import { Calendar, Target, Clock } from "lucide-react";
+import { useWorkouts } from "../../contexts/WorkoutsContext";
+
+import { Calendar, Target, Repeat } from "lucide-react";
 
 const DashboardWorkout = () => {
+    const { workoutsByDay } = useWorkouts();
+
+    // figures out today's workout based on current date
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const today = daysOfWeek[new Date().getDay()];
+    const todaysWorkout = workoutsByDay[today];
+
+    let totalSets = 0;
+    for (let i = 0; i < todaysWorkout.exercises.length; i++) {
+        totalSets += Number(todaysWorkout.exercises[i].sets);
+    }
+
     return (
         <section className="dashboard-section">
             <h2 className="dashboard-label label-primary">
@@ -10,19 +24,21 @@ const DashboardWorkout = () => {
 
             <article className="dashboard-workout">
                 <div className="dashboard-workout-details">
-                    <div className="text-primary">Push Day</div>
+                    <div className="text-primary">{todaysWorkout.routineName || "No workouts scheduled today"}</div>
 
                     <ul className="dashboard-workout-metrics">
                         <li className="text-secondary">
-                            <Target size={16} />6 Exercises
+                            <Target size={16} />
+                            {todaysWorkout.exercises.length} Exercises
                         </li>
                         <li className="text-secondary">
-                            <Clock size={16} />1 Hour
+                            <Repeat size={16} />
+                            {totalSets} Sets
                         </li>
                     </ul>
                 </div>
 
-                <button className="button-primary">Start Workout</button>
+                <button className="button-primary">Open Workout</button>
             </article>
         </section>
     );

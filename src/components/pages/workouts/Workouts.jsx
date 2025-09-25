@@ -1,26 +1,17 @@
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
+import { useWorkouts } from "../../contexts/WorkoutsContext";
 
 import WorkoutsWeek from "./WorkoutsWeek";
 import WorkoutsRoutineModal from "./WorkoutsRoutineModal";
-import WorkoutsPlan from "./WorkoutsPlan";
+import WorkoutsRoutine from "./WorkoutsRoutine";
 import WorkoutsExerciseModal from "./WorkoutsExerciseModal";
 
 import { Plus } from "lucide-react";
 import "./Workouts.css";
 
 const Workouts = () => {
-    const [selectedDay, setSelectedDay] = useState("Monday");
-
-    const [workoutsByDay, setWorkoutsByDay] = useState({
-        Monday: { routineName: "", exercises: [] },
-        Tuesday: { routineName: "", exercises: [] },
-        Wednesday: { routineName: "", exercises: [] },
-        Thursday: { routineName: "", exercises: [] },
-        Friday: { routineName: "", exercises: [] },
-        Saturday: { routineName: "", exercises: [] },
-        Sunday: { routineName: "", exercises: [] },
-    });
+    const { selectedDay, workoutsByDay } = useWorkouts();
 
     const [routineModalOpen, setRoutineModalOpen] = useState(false);
     const [exerciseModalOpen, setExerciseModalOpen] = useState(false);
@@ -28,28 +19,19 @@ const Workouts = () => {
     return (
         <main className="workouts">
             <header className="workouts-header">
-                <h1 className="subtitle">Workout Log</h1>
-                <div className="text-secondary">Track your daily workouts by logging exercises and routines</div>
+                <h1 className="title-secondary">Workout Log</h1>
+                <div className="text-secondary">Track your daily workouts by routines and exercises</div>
             </header>
 
             <section className="workouts-section">
-                <WorkoutsWeek selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
+                <WorkoutsWeek />
 
                 {selectedDay &&
                     (workoutsByDay[selectedDay].routineName ? (
-                        <WorkoutsPlan
+                        <WorkoutsRoutine
                             routineName={workoutsByDay[selectedDay].routineName}
-                            handleExerciseModalOpen={() => setExerciseModalOpen(true)}
                             exercises={workoutsByDay[selectedDay].exercises}
-                            setExercises={(newExercises) =>
-                                setWorkoutsByDay((currentWorkouts) => ({
-                                    ...currentWorkouts,
-                                    [selectedDay]: {
-                                        ...currentWorkouts[selectedDay],
-                                        exercises: newExercises,
-                                    },
-                                }))
-                            }
+                            handleExerciseModalOpen={() => setExerciseModalOpen(true)}
                         />
                     ) : (
                         <button
@@ -65,37 +47,14 @@ const Workouts = () => {
             {/* Routine Modal */}
             <AnimatePresence>
                 {routineModalOpen && (
-                    <WorkoutsRoutineModal
-                        handleRoutineName={(name) =>
-                            setWorkoutsByDay((currentWorkouts) => ({
-                                ...currentWorkouts,
-                                [selectedDay]: {
-                                    ...currentWorkouts[selectedDay],
-                                    routineName: name,
-                                },
-                            }))
-                        }
-                        handleRoutineModalClose={() => setRoutineModalOpen(false)}
-                    />
+                    <WorkoutsRoutineModal handleRoutineModalClose={() => setRoutineModalOpen(false)} />
                 )}
             </AnimatePresence>
 
             {/* Exercise Modal */}
             <AnimatePresence>
                 {exerciseModalOpen && (
-                    <WorkoutsExerciseModal
-                        exercises={workoutsByDay[selectedDay].exercises}
-                        setExercises={(newExercise) =>
-                            setWorkoutsByDay((currentWorkouts) => ({
-                                ...currentWorkouts,
-                                [selectedDay]: {
-                                    ...currentWorkouts[selectedDay],
-                                    exercises: newExercise,
-                                },
-                            }))
-                        }
-                        handleExerciseModalClose={() => setExerciseModalOpen(false)}
-                    />
+                    <WorkoutsExerciseModal handleExerciseModalClose={() => setExerciseModalOpen(false)} />
                 )}
             </AnimatePresence>
         </main>

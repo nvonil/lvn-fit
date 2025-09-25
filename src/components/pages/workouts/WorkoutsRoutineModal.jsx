@@ -1,15 +1,27 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
+import { useWorkouts } from "../../contexts/WorkoutsContext";
 
-const WorkoutsRoutineModal = ({ handleRoutineName, handleRoutineModalClose }) => {
+const WorkoutsRoutineModal = ({ handleRoutineModalClose }) => {
+    const { selectedDay, setWorkoutsByDay } = useWorkouts();
+
     const [name, setName] = useState("");
-
     const nameInputRef = useRef(null);
 
     const handleInputFocus = () => {
         if (nameInputRef.current) {
             nameInputRef.current.focus();
         }
+    };
+
+    const handleRoutineName = (name) => {
+        setWorkoutsByDay((current) => ({
+            ...current,
+            [selectedDay]: {
+                ...current[selectedDay],
+                routineName: name,
+            },
+        }));
     };
 
     const handleFormSubmit = (e) => {
