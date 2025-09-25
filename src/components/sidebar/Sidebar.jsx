@@ -26,7 +26,7 @@ const Sidebar = () => {
 
     return (
         <aside className="sidebar">
-            <h1 className="title">LVN Fit</h1>
+            <h1 className="title-primary">LVN Fit</h1>
 
             <hr className="sidebar-divider" />
 
