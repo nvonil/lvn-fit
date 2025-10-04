@@ -20,7 +20,7 @@ const Workouts = () => {
         <main className="workouts">
             <header className="workouts-header">
                 <h1 className="title-secondary">Workout Log</h1>
-                <div className="text-secondary">Track your daily workouts by routines and exercises</div>
+                <div className="text-secondary">Track your daily workouts by logging routines and exercises</div>
             </header>
 
             <section className="workouts-section">
