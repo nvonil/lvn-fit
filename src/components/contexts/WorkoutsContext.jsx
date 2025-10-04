@@ -4,7 +4,7 @@ const WorkoutsContext = createContext();
 
 const WorkoutsProvider = ({ children }) => {
     const getSelectedDay = () => {
-        const storedDay = localStorage.getItem("selectedDay");
+        const storedDay = localStorage.getItem("workoutsSelectedDay");
 
         if (storedDay) {
             return storedDay;
@@ -35,7 +35,7 @@ const WorkoutsProvider = ({ children }) => {
 
     const [selectedDay, setSelectedDay] = useState(getSelectedDay);
     useEffect(() => {
-        localStorage.setItem("selectedDay", selectedDay);
+        localStorage.setItem("workoutsSelectedDay", selectedDay);
     }, [selectedDay]);
 
     const [workoutsByDay, setWorkoutsByDay] = useState(getWorkoutsByDay);
