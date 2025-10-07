@@ -26,8 +26,8 @@ const Workouts = () => {
             <section className="workouts-section">
                 <WorkoutsWeek />
 
-                {selectedDay &&
-                    (workoutsByDay[selectedDay].routineName ? (
+                {selectedDay && workoutsByDay[selectedDay] ? (
+                    workoutsByDay[selectedDay].routineName ? (
                         <WorkoutsRoutine
                             routineName={workoutsByDay[selectedDay].routineName}
                             exercises={workoutsByDay[selectedDay].exercises}
@@ -41,7 +41,8 @@ const Workouts = () => {
                             <Plus size={18} />
                             Add Routine
                         </button>
-                    ))}
+                    )
+                ) : null}
             </section>
 
             {/* Routine Modal */}
