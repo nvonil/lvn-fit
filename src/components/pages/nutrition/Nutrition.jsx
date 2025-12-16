@@ -1,4 +1,5 @@
 import NutritionWeek from "./NutritionWeek";
+import NutritionMeals from "./NutritionMeals";
 
 import "./Nutrition.css";
 
@@ -12,6 +13,7 @@ const Nutrition = () => {
 
             <section className="nutrition-section">
                 <NutritionWeek />
+                <NutritionMeals />
             </section>
         </main>
     );
