@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useNutrition } from "../../contexts/NutritionContext";
 
 const NutritionMeals = () => {
-    const [selectedMeal, setSelectedMeal] = useState("Breakfast");
+    const { selectedMeal, setSelectedMeal } = useNutrition();
     const meals = ["Breakfast", "Lunch", "Dinner", "Snacks"];
 
     return (
