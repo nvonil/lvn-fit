@@ -2,6 +2,7 @@ import NutritionWeek from "./NutritionWeek";
 import NutritionMeals from "./NutritionMeals";
 
 import "./Nutrition.css";
+import NutritionMealsContent from "./NutritionMealsContent";
 
 const Nutrition = () => {
     return (
@@ -14,6 +15,7 @@ const Nutrition = () => {
             <section className="nutrition-section">
                 <NutritionWeek />
                 <NutritionMeals />
+                <NutritionMealsContent />
             </section>
         </main>
     );
