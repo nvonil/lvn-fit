@@ -75,3 +75,180 @@
 .nutrition-meal.active {
     background-color: var(--background-secondary);
 }
+
+/* Meals Content */
+
+.nutrition-meals-content {
+    border: 1px solid var(--color-primary);
+    border-radius: var(--space-base);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-medium);
+
+    padding: var(--space-medium);
+}
+
+.nutrition-meals-header {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-base);
+}
+
+.nutrition-label,
+.nutrition-button {
+    display: flex;
+    align-items: center;
+    gap: var(--space-base);
+}
+
+/* Foods */
+
+.nutrition-foods {
+    overflow-y: auto;
+
+    max-height: 350px;
+    padding: var(--space-extra-small) var(--space-medium);
+}
+
+.workouts-foods::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+.workouts-foods::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+    border-radius: var(--space-base);
+}
+
+.nutrition-empty {
+    text-align: center;
+
+    margin-bottom: calc(var(--space-medium) + 40px);
+}
+
+.nutrition-food {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-base);
+
+    background-color: var(--background-primary);
+    border-radius: var(--space-base);
+
+    margin-bottom: var(--space-medium);
+    padding: var(--space-base);
+
+    transition: transform 0.3s;
+}
+
+.nutrition-food:hover {
+    transform: scale(1.01);
+}
+
+.nutrition-food:last-child {
+    margin-bottom: 0;
+}
+
+.nutrition-food-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nutrition-food-details {
+    display: flex;
+    align-items: center;
+    gap: var(--space-base);
+}
+
+.nutrition-food-remove {
+    color: var(--color-primary);
+    cursor: pointer;
+
+    transition: color 0.3s;
+}
+
+.nutrition-food-remove:hover {
+    color: var(--color-delete);
+}
+
+.nutrition-metrics {
+    display: flex;
+    gap: var(--space-base);
+
+    list-style: none;
+}
+
+.nutrition-macros {
+    display: flex;
+    gap: var(--space-base);
+}
+
+/* Modal */
+
+.nutrition-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.nutrition-modal {
+    z-index: 2;
+
+    background-color: var(--background-secondary);
+    border-radius: var(--space-base);
+
+    padding: var(--space-medium);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-medium);
+}
+
+.nutrition-modal-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-extra-small);
+}
+
+/* Form */
+
+.nutrition-modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-medium);
+}
+
+.nutrition-modal-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-small);
+    flex: 1;
+}
+
+.nutrition-modal-form-group {
+    display: flex;
+    gap: var(--space-base);
+}
+
+.nutrition-input {
+    width: 150px;
+}
+
+.nutrition-modal-form-actions {
+    display: flex;
+    gap: var(--space-base);
+
+    margin-top: var(--space-medium);
+}
+
+.form-button:first-child {
+    flex: 1;
+
+    text-align: center;
+}
