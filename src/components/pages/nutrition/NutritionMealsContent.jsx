@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useNutrition } from "../../contexts/NutritionContext";
 
-import { Coffee, Plus, Trash } from "lucide-react";
+import { Coffee, Sandwich, Utensils, Apple, Plus, Trash } from "lucide-react";
 import NutritionFoodModal from "./NutritionFoodModal";
 
 const NutritionMealsContent = () => {
@@ -10,13 +10,21 @@ const NutritionMealsContent = () => {
 
     const [foodModalOpen, setFoodModalOpen] = useState(false);
 
-    const foods = foodsByDay[selectedDay][selectedMeal];
+    const mealIcons = {
+        Breakfast: Coffee,
+        Lunch: Sandwich,
+        Dinner: Utensils,
+        Snacks: Apple,
+    };
+
+    const MealIcon = mealIcons[selectedMeal];
+    const foods = foodsByDay?.[selectedDay]?.[selectedMeal] ?? [];
 
     return (
         <section className="nutrition-meals-content">
             <header className="nutrition-meals-header">
                 <h2 className="nutrition-label label-primary">
-                    <Coffee size={18} />
+                    {MealIcon && <MealIcon size={18} />}
                     {selectedMeal}
                 </h2>
 
