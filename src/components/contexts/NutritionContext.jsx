@@ -3,13 +3,15 @@ import { createContext, useContext, useState, useEffect } from "react";
 const NutritionContext = createContext();
 
 const NutritionProvider = ({ children }) => {
+    const getToday = () => new Date().toLocaleDateString("en-US", { weekday: "long" });
+
     const getSelectedDay = () => {
         const storedDay = localStorage.getItem("nutritionSelectedDay");
 
         if (storedDay) {
             return storedDay;
         } else {
-            return null;
+            return getToday();
         }
     };
 
@@ -19,7 +21,7 @@ const NutritionProvider = ({ children }) => {
         if (storedMeal) {
             return storedMeal;
         } else {
-            return null;
+            return "Breakfast";
         }
     };
 

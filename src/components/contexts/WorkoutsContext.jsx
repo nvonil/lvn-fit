@@ -3,13 +3,15 @@ import { createContext, useContext, useState, useEffect } from "react";
 const WorkoutsContext = createContext();
 
 const WorkoutsProvider = ({ children }) => {
+    const getToday = () => new Date().toLocaleDateString("en-US", { weekday: "long" });
+
     const getSelectedDay = () => {
         const storedDay = localStorage.getItem("workoutsSelectedDay");
 
         if (storedDay) {
             return storedDay;
         } else {
-            return null;
+            return getToday();
         }
     };
 
