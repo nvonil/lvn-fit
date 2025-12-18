@@ -107,15 +107,15 @@
 .nutrition-foods {
     overflow-y: auto;
 
-    max-height: 350px;
+    max-height: 353px;
     padding: var(--space-extra-small) var(--space-medium);
 }
 
-.workouts-foods::-webkit-scrollbar {
+.nutrition-foods::-webkit-scrollbar {
     width: 0.5rem;
 }
 
-.workouts-foods::-webkit-scrollbar-thumb {
+.nutrition-foods::-webkit-scrollbar-thumb {
     background-color: var(--color-primary);
     border-radius: var(--space-base);
 }
