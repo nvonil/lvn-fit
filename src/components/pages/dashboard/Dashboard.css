@@ -112,3 +112,7 @@
 .dashboard-stats-label {
     gap: var(--space-small);
 }
+
+.dashboard-nutrition-button {
+    align-self: flex-end;
+}
