@@ -43,6 +43,21 @@ const NutritionProvider = ({ children }) => {
         }
     };
 
+    const getGoals = () => {
+        const storedGoals = localStorage.getItem("nutritionGoals");
+
+        if (storedGoals) {
+            return JSON.parse(storedGoals);
+        } else {
+            return {
+                calories: 0,
+                protein: 0,
+                carbs: 0,
+                fats: 0,
+            };
+        }
+    };
+
     const [selectedDay, setSelectedDay] = useState(getSelectedDay);
     useEffect(() => {
         localStorage.setItem("nutritionSelectedDay", selectedDay);
@@ -57,6 +72,11 @@ const NutritionProvider = ({ children }) => {
     useEffect(() => {
         localStorage.setItem("foodsByDay", JSON.stringify(foodsByDay));
     }, [foodsByDay]);
+
+    const [goals, setGoals] = useState(getGoals);
+    useEffect(() => {
+        localStorage.setItem("nutritionGoals", JSON.stringify(goals));
+    }, [goals]);
 
     const addFood = (day, meal, food) => {
         setFoodsByDay((current) => ({
@@ -89,6 +109,8 @@ const NutritionProvider = ({ children }) => {
                 setFoodsByDay,
                 addFood,
                 removeFood,
+                goals,
+                setGoals,
             }}
         >
             {children}
