@@ -14,14 +14,6 @@ const Sidebar = () => {
                 { name: "Progress", icon: ChartColumn, path: "/progress" },
             ],
         },
-        {
-            label: "OTHERS",
-            links: [
-                { name: "Profile", icon: User, path: "/profile" },
-                { name: "Settings", icon: Settings, path: "/settings" },
-                { name: "Help", icon: Info, path: "/help" },
-            ],
-        },
     ];
 
     return (
