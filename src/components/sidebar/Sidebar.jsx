@@ -1,9 +1,9 @@
 import SidebarLink from "./SidebarLink";
 
-import { House, Dumbbell, Utensils, ChartColumn, User, Settings, Info } from "lucide-react";
+import { House, Dumbbell, Utensils, SquareChevronRight, SquareChevronLeft } from "lucide-react";
 import "./Sidebar.css";
 
-const Sidebar = () => {
+const Sidebar = ({ isCollapsed, onToggle }) => {
     const sections = [
         {
             label: "MENU",
@@ -11,23 +11,29 @@ const Sidebar = () => {
                 { name: "Dashboard", icon: House, path: "/" },
                 { name: "Workouts", icon: Dumbbell, path: "/workouts" },
                 { name: "Nutrition", icon: Utensils, path: "/nutrition" },
-                { name: "Progress", icon: ChartColumn, path: "/progress" },
             ],
         },
     ];
 
     return (
-        <aside className="sidebar">
-            <h1 className="title-primary">LVN Fit</h1>
+        <aside className={`sidebar ${isCollapsed ? "collapsed" : ""}`}>
+            <header className="sidebar-header">
+                {!isCollapsed && <h1 className="title-primary">LVN Fit</h1>}
+                {isCollapsed ? (
+                    <SquareChevronRight size={18} onClick={onToggle} />
+                ) : (
+                    <SquareChevronLeft size={18} onClick={onToggle} />
+                )}
+            </header>
 
             <hr className="sidebar-divider" />
 
             {sections.map((section) => (
                 <section className="sidebar-section" key={section.label}>
-                    <h2 className="label-secondary">{section.label}</h2>
+                    {!isCollapsed && <h2 className="label-secondary">{section.label}</h2>}
                     <nav className="sidebar-nav">
                         {section.links.map((link) => (
-                            <SidebarLink key={link.name} link={link} />
+                            <SidebarLink key={link.name} link={link} isCollapsed={isCollapsed} />
                         ))}
                     </nav>
                 </section>

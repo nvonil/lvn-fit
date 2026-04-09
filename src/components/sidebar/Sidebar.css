@@ -5,6 +5,31 @@
 
     width: 275px;
     padding: var(--space-large);
+
+    transition: width 0.3s, padding 0.3s;
+}
+
+.sidebar.collapsed {
+    width: 100px;
+    padding: var(--space-large) var(--space-medium);
+}
+
+.sidebar.collapsed .sidebar-header {
+    justify-content: center;
+}
+
+.sidebar.collapsed .sidebar-link {
+    justify-content: center;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-header .title-primary {
+    white-space: nowrap;
 }
 
 .sidebar-divider {

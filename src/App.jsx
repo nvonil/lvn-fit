@@ -8,14 +8,18 @@ import Workouts from "./components/pages/workouts/Workouts";
 import Nutrition from "./components/pages/nutrition/Nutrition";
 
 import "./styles/App.css";
+import { useState } from "react";
 
 function App() {
+    const [isCollapsed, setIsCollapsed] = useState(false);
+
     return (
         <Router>
             <WorkoutsProvider>
                 <NutritionProvider>
                     <div className="app">
-                        <Sidebar />
+                        <Sidebar isCollapsed={isCollapsed} onToggle={() => setIsCollapsed(!isCollapsed)} />
+
                         <main className="main">
                             <Routes>
                                 <Route path="/" element={<Dashboard />} />
