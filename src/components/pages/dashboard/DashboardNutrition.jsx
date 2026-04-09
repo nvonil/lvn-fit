@@ -39,30 +39,44 @@ const DashboardNutrition = () => {
             </h2>
 
             <article className="dashboard-nutrition">
-                {macros.map((macro) => (
-                    <div className="dashboard-nutrition-macro" key={macro.name}>
-                        <div className="dashboard-nutrition-details">
-                            <div className="text-primary">{macro.name}</div>
-                            <div className="text-primary">
-                                {macro.current}
-                                {macro.unit} / {macro.goal}
-                                {macro.unit}
+                {macros.map((macro) => {
+                    let progress = 0;
+                    let status = "";
+
+                    if (macro.goal === null) {
+                        status = "No goal set";
+                    } else {
+                        const remaining = macro.goal - macro.current;
+                        progress = macro.goal > 0 ? Math.min((macro.current / macro.goal) * 100, 100) : 0;
+
+                        if (remaining > 0) {
+                            status = `${remaining}${macro.unit} ${macro.remaining}`;
+                        } else if (remaining === 0) {
+                            status = "Goal met";
+                        } else {
+                            status = "Goal exceeded";
+                        }
+                    }
+
+                    return (
+                        <div className="dashboard-nutrition-macro" key={macro.name}>
+                            <div className="dashboard-nutrition-details">
+                                <div className="text-primary">{macro.name}</div>
+                                <div className="text-primary">
+                                    {macro.current}
+                                    {macro.unit} / {macro.goal}
+                                    {macro.unit}
+                                </div>
                             </div>
-                        </div>
 
-                        <div className="dashboard-nutrition-bar">
-                            <div
-                                className="dashboard-nutrition-bar-fill"
-                                style={{ width: `${Math.min((macro.current / macro.goal) * 100, 100)}%` }}
-                            ></div>
-                        </div>
+                            <div className="dashboard-nutrition-bar">
+                                <div className="dashboard-nutrition-bar-fill" style={{ width: `${progress}%` }}></div>
+                            </div>
 
-                        <div className="text-secondary">
-                            {macro.goal - macro.current}
-                            {macro.unit} {macro.remaining}
+                            <div className="text-secondary">{status}</div>
                         </div>
-                    </div>
-                ))}
+                    );
+                })}
             </article>
 
             <button className="dashboard-nutrition-button button-primary" onClick={() => navigate("/nutrition")}>

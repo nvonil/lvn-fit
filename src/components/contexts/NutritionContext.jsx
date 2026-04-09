@@ -50,10 +50,10 @@ const NutritionProvider = ({ children }) => {
             return JSON.parse(storedGoals);
         } else {
             return {
-                calories: 0,
-                protein: 0,
-                carbs: 0,
-                fats: 0,
+                calories: null,
+                protein: null,
+                carbs: null,
+                fats: null,
             };
         }
     };
